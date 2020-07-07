@@ -42,7 +42,9 @@ const handleAnimalFormSubmit = event => {
       alert('Error: ' + response.statusText);
     })
     .then(postResponse => {
-      alert('Thank you for adding an animal!');
+      if (postResponse) {
+        alert('Thank you for adding an animal!');
+      }
     });
 };
 
@@ -54,7 +56,7 @@ const handleZookeeperFormSubmit = event => {
   const favoriteAnimal = $zookeeperForm.querySelector('[name="favorite-animal"]').value;
 
   const zookeeperObj = { name, age, favoriteAnimal };
-  console.log(zookeeperObj);
+
   fetch('/api/zookeepers', {
     method: 'POST',
     headers: {
@@ -70,8 +72,9 @@ const handleZookeeperFormSubmit = event => {
     alert('Error: ' + response.statusText);
   })
   .then(postResponse => {
-    console.log(postResponse)
-    alert('Thank you for adding a zookeeper!');
+    if (postResponse) {
+      alert('Thank you for adding a zookeeper!');
+    }
   });
 }
 
